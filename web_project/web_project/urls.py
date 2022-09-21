@@ -20,5 +20,6 @@ from listeur import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', views.hello),
-    path('test/', views.test)
+    path('test/', views.test),
+    
 ]
