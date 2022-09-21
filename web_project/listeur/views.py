@@ -25,4 +25,5 @@ def band(request):
 
 def hello(request):
     bandits = Band.objects.all()
-    return render(request, 'listeur/hello.html')
+    return render(request, 'listeur/hello.html',
+                  {'voleurs': bandits})
