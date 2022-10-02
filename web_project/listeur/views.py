@@ -16,11 +16,15 @@ def band(request):
     bands = Band.objects.all()
     page = """\
         <h1>Hello Django !</h1>
-        <p>Mes groupes préférés sont :<p>
+        <p>Mes groupes Noms des Bands sont :<p>
         <ul>"""
     for a in bands:
         page = page + "<li>" + a.name + "</li>"
+    page = page + "</ul> <p>Mes groupes genres des Bands sont :<p><ul>"
+    for b in bands:
+        page = page + "<li>" + b.genre + "</li>"
     page = page + "</ul>"
+        
     return HttpResponse(page)    
 
 def hello(request):
