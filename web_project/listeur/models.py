@@ -1,4 +1,5 @@
 from datetime import datetime
+from email.policy import default
 from django.db import models
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -30,5 +31,5 @@ class Listeur(models.Model):
     sold = models.fields.BooleanField(default=True)
     year = models.fields.IntegerField(validators=[MinValueValidator(1999), MaxValueValidator(2022)], default=2010)
     type = models.fields.CharField(choices=Type.choices, max_length=5, default='M')
-    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL, default = Band(4))
     
