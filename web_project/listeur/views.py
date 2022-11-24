@@ -1,10 +1,31 @@
 from pickletools import read_uint1
 from django.http import HttpResponse
 from django.shortcuts import render
-from listeur.models import Band
+from listeur.models import *
+import requests
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from rest_framework import permissions
+from listeur.serializers import *
 
 # Create your views here.
 
+
+class ViewsBands(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Band.objects.all()
+    serializer_class = BandsViews
+    permission_classes = [permissions.IsAuthenticated]
+
+class ViewsListeurs(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Listeur.objects.all()
+    serializer_class = ListeurViews
+    permission_classes = [permissions.IsAuthenticated]
 
 
 def test(request):
@@ -28,6 +49,7 @@ def band(request):
     return HttpResponse(page)    
 
 def hello(request):
-    bandits = Band.objects.all()
-    return render(request, 'listeur/hello.html',
-                  {'voleurs': bandits})
+    response = requests.get("http://127.0.0.1:8000/bands/")
+    # bandits = Band.objects.all()
+    data = response.json()
+    return render(request, 'listeur/info.html', {'data': data})
