@@ -21,12 +21,14 @@ from listeur import views
 router = routers.DefaultRouter()
 router.register(r'bands', views.ViewsBands)
 router.register(r'listeur', views.ViewsListeurs)
+router.register(r'eleve', views.ViewsEleves)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.hello),
-    path('test/', views.test),
+    path('pageband/', views.pageband),
+    path('pagelisteur/', views.pagelisteur),
+    path('pageeleve/', views.pageeleve),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     

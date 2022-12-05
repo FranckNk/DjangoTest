@@ -17,7 +17,7 @@ class ViewsBands(viewsets.ModelViewSet):
     """
     queryset = Band.objects.all()
     serializer_class = BandsViews
-    permission_classes = [permissions.IsAuthenticated]
+   # permission_classes = [permissions.IsAuthenticated]
 
 class ViewsListeurs(viewsets.ModelViewSet):
     """
@@ -25,8 +25,15 @@ class ViewsListeurs(viewsets.ModelViewSet):
     """
     queryset = Listeur.objects.all()
     serializer_class = ListeurViews
-    permission_classes = [permissions.IsAuthenticated]
+   # permission_classes = [permissions.IsAuthenticated]
 
+class ViewsEleves(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Eleve.objects.all()
+    serializer_class = ElevesViews
+   # permission_classes = [permissions.IsAuthenticated]
 
 def test(request):
     return HttpResponse(
@@ -53,3 +60,12 @@ def hello(request):
     # bandits = Band.objects.all()
     data = response.json()
     return render(request, 'listeur/info.html', {'data': data})
+
+def pageband(request):
+    return render(request, 'listeur/info.html')
+
+def pageeleve(request):
+    return render(request, 'listeur/eleve.html')
+
+def pagelisteur(request):
+    return render(request, 'listeur/listeur.html')

@@ -32,5 +32,19 @@ class Listeur(models.Model):
     sold = models.fields.BooleanField(default=True)
     year = models.fields.IntegerField(validators=[MinValueValidator(1999), MaxValueValidator(2022)], default=2010)
     type = models.fields.CharField(choices=Type.choices, max_length=5, default='M')
-    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL, default = Band(4))
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
+
+class Eleve(models.Model):
+    class Sexe(models.TextChoices):
+        Male = 'M'
+        Female = 'F'
+        Other = 'BI'
     
+    name = models.fields.CharField(max_length=100)
+    surname = models.fields.CharField(max_length=100)
+    #genre = models.fields.CharField(max_length=50)
+    sexe = models.fields.CharField(choices=Sexe.choices, max_length=5, default='M')
+    birthday = models.fields.IntegerField(validators=[MinValueValidator(1950), MaxValueValidator(2015)], default=2000)
+    register_date = models.fields.IntegerField(validators=[MinValueValidator(2018), MaxValueValidator(2022)], default=2020)
+    New_student = models.fields.BooleanField(default=True)
+    email = models.fields.EmailField(null=True, blank=True)
