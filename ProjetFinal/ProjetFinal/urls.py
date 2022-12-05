@@ -12,6 +12,14 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+    curl -d "title='Bonjour'&Valeur=20" http://127.0.0.1:8000/arduino
+    
+    curl -H "Content-Type: application/json" -X POST -d '{"nom":Bonjour,"val":20}' http://127.0.0.1:8000/arduino > result.html
+    curl -X POST http://127.0.0.1:8000/arduino -H 'Content-Type: application/json' -d '{"nom":Bonjour,"val":20}'
+    curl -X POST http://127.0.0.1:8000/arduino -H "Content-Type: application/x-www-form-urlencoded" -d "nom='Bonjour'&val=20"
+    curl -X POST http://192.168.1.26/arduino -H "Content-Type: application/x-www-form-urlencoded" -d "nom='Bonjour'&val=20"
+    
+    
 """
 from django.contrib import admin
 from django.urls import path, include
