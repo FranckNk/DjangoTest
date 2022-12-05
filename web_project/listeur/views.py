@@ -31,3 +31,8 @@ def hello(request):
     bandits = Band.objects.all()
     return render(request, 'listeur/hello.html',
                   {'voleurs': bandits})
+
+def band_details(request, id):
+    bandits = Band.objects.get(id=id+)
+    return render(request, 'listeur/hello.html',
+                  {'voleurs': bandits})

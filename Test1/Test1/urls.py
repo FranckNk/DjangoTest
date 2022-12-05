@@ -1,4 +1,4 @@
-"""web_project URL Configuration
+"""Test1 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,12 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from listeur import views
+from Ecole import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.hello),
-    path('test/', views.test),
-    path('bands/<int:id>/', views.band_details, name='band_detail')
-    
+    path('info/', views.info),
 ]
