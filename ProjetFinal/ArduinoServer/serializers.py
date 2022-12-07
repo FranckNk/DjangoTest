@@ -6,4 +6,4 @@ class DonneeSerializer(serializers.ModelSerializer):
  
     class Meta:
         model = Donnee
-        fields = ('title', 'Valeur',  'register_date')
+        fields = ('title', 'Valeur',  'register_date', 'id_uc')
