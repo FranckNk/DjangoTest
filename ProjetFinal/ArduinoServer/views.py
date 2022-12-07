@@ -35,7 +35,7 @@ def arduino_list(request):
         Value = request.POST["val"]
         print("Nom " + Nom + " Value : " + Value)
         
-        dict = {
+        temp = {
          'title': Nom,
          'Valeur': Value
         }
@@ -44,12 +44,11 @@ def arduino_list(request):
         #Temp.Value = Value
         #Temp.save()
         #print(Temp)
-        temp_serializer = DonneeSerializer(data=dict)
+        temp_serializer = DonneeSerializer(data=temp)
         
         if temp_serializer.is_valid():
             temp_serializer.save()
             return JsonResponse(temp_serializer.data, status=status.HTTP_201_CREATED) 
         
         return JsonResponse(temp_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
- 
  

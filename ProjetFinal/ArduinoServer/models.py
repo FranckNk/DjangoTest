@@ -8,4 +8,5 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Donnee(models.Model):
     title = models.CharField(max_length=70, blank=False, default='')
     Valeur = models.FloatField()
-    register_date = models.DateField(auto_now_add = True)
+    register_date = models.DateTimeField(auto_now_add = True)
+    id_uc = models.IntegerField(default=0)
