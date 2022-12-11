@@ -31,13 +31,15 @@ def arduino_list(request):
         print("Post request")
         #DonneesData = JSONParser().parse(request)
         #print(DonneesData)
-        Nom= request.POST["nom"]
-        Value = request.POST["val"]
-        print("Nom " + Nom + " Value : " + Value)
+        val1= request.POST["nom"]
+        val2 = request.POST["val"]
+        val3 = request.POST["id_micro"]
+        print("Nom " + val1 + " Value : " + val2)
         
         temp = {
-         'title': Nom,
-         'Valeur': Value
+         'title': val1,
+         'Valeur': val2,
+         'id_uc' : val3
         }
         #Temp =  Donnee()
         #Temp.name = Nom
