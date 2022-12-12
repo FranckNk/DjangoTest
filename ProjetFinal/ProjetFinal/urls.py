@@ -17,7 +17,7 @@ Including another URLconf
     curl -H "Content-Type: application/json" -X POST -d '{"nom":Bonjour,"val":20}' http://127.0.0.1:8000/arduino > result.html
     curl -X POST http://127.0.0.1:8000/arduino -H 'Content-Type: application/json' -d '{"nom":Bonjour,"val":20}'
 curl -X POST http://127.0.0.1:8000/arduino -H "Content-Type: application/x-www-form-urlencoded" -d "nom='Bonjour'&val=20"
-curl -X POST http://192.168.1.112:8000/arduino -H "Content-Type: application/x-www-form-urlencoded" -d "nom='slaut'&val=40"
+curl -X POST http://192.168.2.21:8000/arduino -H "Content-Type: application/x-www-form-urlencoded" -d "nom='Temperature'&val=40&id_micro=MKR1000"
 
 netsh interface portproxy add v4tov4 listenport=8000 connectaddress=192.168.1.112 listenaddress=127.0.0.1
     
@@ -30,10 +30,13 @@ from rest_framework import routers
 
 
 router = routers.DefaultRouter()
-router.register(r'users', views.DonneeViewSet)
+router.register(r'donnee', views.DonneeViewSet)
+router.register(r'donnees', views.DonneesViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
     path(r'arduino', views.arduino_list),
+    path(r'arduino2', views.arduino_list2),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
  
