@@ -19,7 +19,7 @@ Including another URLconf
 curl -X POST http://127.0.0.1:8000/arduino -H "Content-Type: application/x-www-form-urlencoded" -d "nom='Bonjour'&val=20"
 curl -X POST http://192.168.2.21:8000/arduino -H "Content-Type: application/x-www-form-urlencoded" -d "nom='Temperature'&val=40&id_micro=MKR1000"
 
-netsh interface portproxy add v4tov4 listenport=8000 connectaddress=192.168.1.112 listenaddress=127.0.0.1
+netsh interface portproxy add v4tov4 listenport=8000 connectaddress=192.168.2.21 listenaddress=127.0.0.1
     
     
 """
