@@ -30,7 +30,7 @@ class Personnel(models.Model):
     Poste = models.CharField(max_length=70, blank=False, default='prenom')
     Salaire = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], default=20)
     Departement = models.CharField(max_length=20, default='')
-    Entreprise = models.ForeignKey(Entreprise, null=True, on_delete=models.SET_NULL)
     sexe = models.CharField(choices=Sexe.choices, max_length=5, default='M')
+    Entreprise = models.ForeignKey(Entreprise, null=True, on_delete=models.SET_NULL, related_name= 'Personnel')
     #retourne le nom du model
   
